@@ -29,8 +29,8 @@ CREATE TABLE finance_Pret (
    date_pret DATE,
    date_fin DATE,
    PRIMARY KEY(id_type_pret, id_client, id),
-   FOREIGN KEY(id_type_pret) REFERENCES Type_Pret(id),
-   FOREIGN KEY(id_client) REFERENCES Clients(id)
+   FOREIGN KEY(id_type_pret) REFERENCES finance_Type_Pret(id),
+   FOREIGN KEY(id_client) REFERENCES finance_Clients(id)
 );
 
 CREATE TABLE finance_Type_Transaction (
@@ -55,7 +55,7 @@ CREATE TABLE finance_Transaction (
    date_transaction DATE,
    montant INT,
    PRIMARY KEY(id_type_pret, id_client, id_pret, id_etablissement, id_type_transaction, id),
-   FOREIGN KEY(id_type_pret, id_client, id_pret) REFERENCES Pret(id_type_pret, id_client, id),
-   FOREIGN KEY(id_etablissement) REFERENCES Etablissement_Financier(id),
-   FOREIGN KEY(id_type_transaction) REFERENCES Type_Transaction(id)
+   FOREIGN KEY(id_type_pret, id_client, id_pret) REFERENCES finance_Pret(id_type_pret, id_client, id),
+   FOREIGN KEY(id_etablissement) REFERENCES finance_Etablissement_Financier(id),
+   FOREIGN KEY(id_type_transaction) REFERENCES finance_Type_Transaction(id)
 );
